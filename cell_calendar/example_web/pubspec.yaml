@@ -1,0 +1,32 @@
+name: example_web
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cell_calendar:
+
+
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^1.0.0
+
+dependency_overrides:
+  cell_calendar:
+    path: ../
+
+
+flutter:
+
+  uses-material-design: true
+
