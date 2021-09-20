@@ -102,14 +102,16 @@ class _CalendarPageView extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         MonthYearLabel(monthYearLabelBuilder),
+        DaysOfTheWeek(daysOfTheWeekBuilder), /* +GUSA */
         Expanded(
           child: PageView.builder(
             controller:
                 cellCalendarPageController ?? CellCalendarPageController(),
+	    scrollDirection: Axis.vertical, /* +GUSA */
             itemBuilder: (context, index) {
               return _CalendarPage(
                 index.visibleDateTime,
-                daysOfTheWeekBuilder,
+                //daysOfTheWeekBuilder, /* -GUSA */
                 dateTextStyle,
               );
             },
@@ -130,13 +132,13 @@ class _CalendarPageView extends StatelessWidget {
 class _CalendarPage extends StatelessWidget {
   const _CalendarPage(
     this.visiblePageDate,
-    this.daysOfTheWeekBuilder,
+    //this.daysOfTheWeekBuilder, /* -GUSA */
     this.dateTextStyle, {
     Key? key,
   }) : super(key: key);
 
   final DateTime visiblePageDate;
-  final daysBuilder? daysOfTheWeekBuilder;
+  //final daysBuilder? daysOfTheWeekBuilder;  /* -GUSA */
   final TextStyle? dateTextStyle;
 
   List<DateTime> _getCurrentDays(DateTime dateTime) {
@@ -159,7 +161,7 @@ class _CalendarPage extends StatelessWidget {
     final days = _getCurrentDays(visiblePageDate);
     return Column(
       children: [
-        DaysOfTheWeek(daysOfTheWeekBuilder),
+        //DaysOfTheWeek(daysOfTheWeekBuilder),  /* -GUSA */
         Expanded(
           child: Column(
             mainAxisSize: MainAxisSize.min,

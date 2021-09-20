@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       //home: MyHomePage(title: 'cell_calendar example'),
-      home: MyHomePage('cell_calendar example'),
+      home: MyHomePage('teams_calendar example'),
       scrollBehavior: MyCustomScrollBehavior(), // これを追加！
 
     );

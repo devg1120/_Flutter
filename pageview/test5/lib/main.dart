@@ -23,20 +23,19 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: CalendarPageView(),
+      home: CalendarPageView1(),
       scrollBehavior: MyCustomScrollBehavior(), // これを追加！
 
     );
   }
 }
 
-class CalendarPageView extends StatelessWidget {
-  const CalendarPageView({Key? key}) : super(key: key);
+class CalendarPageView1 extends StatelessWidget {
+  const CalendarPageView1({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
-    //return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
@@ -49,7 +48,11 @@ class CalendarPageView extends StatelessWidget {
         /// スクロールできるコンポーネント
         Expanded(
           child: PageView.builder(
-            controller: PageController(initialPage: 30),
+            controller: PageController(
+			    initialPage: 30,
+			    ),
+	    scrollDirection: Axis.horizontal,
+	    //scrollDirection: Axis.vertical,
             itemBuilder: (context, index) {
               return const CalendarPage();
             },
@@ -78,7 +81,10 @@ class CalendarPageView2 extends StatelessWidget {
         /// スクロールできるコンポーネント
         Expanded(
           child: PageView.builder(
-            controller: PageController(initialPage: 30),
+            controller: PageController(
+			    initialPage: 30,
+			    ),
+	    scrollDirection: Axis.vertical,
             itemBuilder: (context, index) {
               return const CalendarPage();
             },
