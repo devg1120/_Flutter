@@ -1,19 +1,9 @@
-import 'dart:ui';
-
 import 'package:cell_calendar/cell_calendar.dart';
-import 'package:example_web/sample_event.dart';
+import 'package:example/sample_event.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(MyApp());
-}
-
-class MyCustomScrollBehavior extends MaterialScrollBehavior {
-  @override
-  Set<PointerDeviceKind> get dragDevices => {
-    PointerDeviceKind.touch, // 通常のタッチ入力デバイス
-    PointerDeviceKind.mouse, // これを追加！
-  };
 }
 
 class MyApp extends StatelessWidget {
@@ -26,17 +16,13 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      //home: MyHomePage(title: 'cell_calendar example'),
-      home: MyHomePage('cell_calendar example'),
-      scrollBehavior: MyCustomScrollBehavior(), // これを追加！
-
+      home: MyHomePage(title: 'cell_calendar example'),
     );
   }
 }
 
 class MyHomePage extends StatelessWidget {
-  //MyHomePage({Key key, this.title}) : super(key: key);
-  MyHomePage(this.title) ;
+  MyHomePage({Key key, this.title}) : super(key: key);
   final String title;
 
   @override
@@ -51,8 +37,7 @@ class MyHomePage extends StatelessWidget {
         cellCalendarPageController: cellCalendarPageController,
         events: _sampleEvents,
         daysOfTheWeekBuilder: (dayIndex) {
-          //final labels = ["S", "M", "T", "W", "T", "F", "S"];
-          final labels = ["日", "月", "火", "水", "木", "金", "土"];
+          final labels = ["S", "M", "T", "W", "T", "F", "S"];
           return Padding(
             padding: const EdgeInsets.only(bottom: 4.0),
             child: Text(
@@ -65,17 +50,15 @@ class MyHomePage extends StatelessWidget {
           );
         },
         monthYearLabelBuilder: (datetime) {
-          final year = datetime?.year.toString();
-          //final month = datetime?.month.monthName;
-          final month = datetime?.month.toString();
+          final year = datetime.year.toString();
+          final month = datetime.month.monthName;
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 4),
             child: Row(
               children: [
                 const SizedBox(width: 16),
                 Text(
-                  //"$month  $year",
-                  "$year 年　$month 月",
+                  "$month  $year",
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
